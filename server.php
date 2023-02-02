@@ -1,9 +1,8 @@
-
 <?php
     // get the arguments in the url
     $args = $_SERVER['QUERY_STRING'];
     header("Access-Control-Allow-Origin: *");
-    $db = new SQLite3('C:/Users/hervi/Documents/Cours ESILV/Advanced web dev/Liste de courses/liste.db'); // 
+    $db = new SQLite3('/home/elli/nodeManagement/liste.db'); // 
     // get the first 6 characters of the arguments
     $arg = substr($args, 0, 6);
     if ($arg == 'mode=1') { // if the arguments are mode=1 : send the course list

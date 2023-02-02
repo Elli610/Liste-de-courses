@@ -6,7 +6,7 @@ if(!localStorage["courses"]){
 if(!localStorage["deletedItems"]){
     localStorage["deletedItems"] = JSON.stringify([]);
 }
-$url = "http://localhost/advanced_web_dev/TD2/"; //"http://89.58.41.130/liste_de_courses/";
+$url = "http://89.58.41.130/liste_de_courses/";//"http://localhost/advanced_web_dev/TD2/"; 
 // add a synchronisation button that connect to the server and sync the shopping list
 var buttonSync = document.createElement("button");
 buttonSync.innerHTML = "Synchroniser";
@@ -29,8 +29,8 @@ function synchoniser(){
         deletedItem = JSON.parse(localStorage["deletedItems"]);
         console.log("deletedItems", JSON.stringify(deletedItem));
         var xhr = new XMLHttpRequest();
-        console.log("url", "http://localhost/advanced_web_dev/TD2/server.php?mode=3&item=" + JSON.stringify(deletedItem));
-        xhr.open('GET', "http://localhost/advanced_web_dev/TD2/server.php?mode=3&item=" + JSON.stringify(deletedItem), true);
+        console.log("url", $url + "server.php?mode=3&item=" + JSON.stringify(deletedItem));
+        xhr.open('GET', $url + "server.php?mode=3&item=" + JSON.stringify(deletedItem), true);
         xhr.responseType = 'text';
         xhr.onload = function () {
             if (xhr.readyState === xhr.DONE) {

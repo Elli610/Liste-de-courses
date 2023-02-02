@@ -6,7 +6,7 @@ if(!localStorage["courses"]){
 if(!localStorage["deletedItems"]){
     localStorage["deletedItems"] = JSON.stringify([]);
 }
-$url = "http://89.58.41.130/liste_de_courses/";//"http://localhost/advanced_web_dev/TD2/"; 
+$url = "http://89.58.41.130/liste_de_courses/"; //"http://localhost/advanced_web_dev/TD2/";
 // add a synchronisation button that connect to the server and sync the shopping list
 var buttonSync = document.createElement("button");
 buttonSync.innerHTML = "Synchroniser";
@@ -24,13 +24,19 @@ function synchoniser(){
     // 3. envoyer les modificatiosn au serveur
     
     // 0.
-    if(localStorage["deletedItems"] != []){
+    if(localStorage["deletedItems"] != "[]" && localStorage["deletedItems"] != ""){
         var deletedItem = localStorage["deletedItems"];
-        deletedItem = JSON.parse(localStorage["deletedItems"]);
-        console.log("deletedItems", JSON.stringify(deletedItem));
+        var del = JSON.parse(deletedItem);
+        var elems = "";
+        for(var i = 0; i < del.length-1; i++){
+            elems += del[i].name + ",";
+        }
+        if(del.length > 0){
+            elems += del[del.length-1];
+        }
+        
         var xhr = new XMLHttpRequest();
-        console.log("url", $url + "server.php?mode=3&item=" + JSON.stringify(deletedItem));
-        xhr.open('GET', $url + "server.php?mode=3&item=" + JSON.stringify(deletedItem), true);
+        xhr.open('GET', $url + "server.php?mode=3&item=" + elems, true);
         xhr.responseType = 'text';
         xhr.onload = function () {
             if (xhr.readyState === xhr.DONE) {
@@ -58,7 +64,7 @@ function synchoniser(){
                 var shoppingList = JSON.parse(savedShoppingList);
                 // 2.
                 if(serverShoppingList['status'] == 'ok'){
-                    console.log("server shopping list : ", serverShoppingList);
+                    //console.log("server shopping list : ", serverShoppingList);
                     serverList = serverShoppingList['courses'];
                     // compare all the items in the server list with the local list
                     for(var i = 0; i < serverList.length; i++){
@@ -78,17 +84,16 @@ function synchoniser(){
                                     else{
                                         // update the server list
                                         var request = new XMLHttpRequest();
-                                        //console.log('http://localhost/advanced_web_dev/TD2/server.php?mode=2&item=" + shoppingList[j].name + "&quantity=" + shoppingList[j].quantity');
+                                        //console.log($url + "server.php?mode=2&item=" + shoppingList[j].name + "&quantity=" + shoppingList[j].quantity);
                                         request.open("GET", $url + "server.php?mode=2&item=" + shoppingList[j].name + "&quantity=" + shoppingList[j].quantity, true);
                                         request.send();
                                         request.onload = function() {
-                                            console.log(request.responseText)
+                                            //console.log(request.responseText)
                                         }
                                     }
                                 }
                             }        
                         } 
-                        console.log("found : ", serverList[i]); 
                         // if the item is not in the server list : add it
                         if(!found){
                             // add the item to the local list
@@ -112,7 +117,7 @@ function synchoniser(){
                             request.open("GET", $url + "server.php?mode=2&item=" + shoppingList[i].name + "&quantity=" + shoppingList[i].quantity, true);
                             request.send();
                             request.onload = function() {
-                                console.log(request.responseText)
+                                //console.log(request.responseText)
                             }
                         }
                     }

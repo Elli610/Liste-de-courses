@@ -1,0 +1,42 @@
+Complétez ce document et soumettez le sur le devoir dans DVO. Sans ça votre réponse ne pourra pas être validée et je ne pourrai la noter (donc 0).
+
+Pour soumettre vos codes sources vous pouvez soit ajouter un ZIP au devoir dans DVO, soit l'héberger sur un dépôt de code. Si vous optez pour un dépôt de code privé sur GitHub vous devez y donner les droits d'accès (consultation ou tout selon votre niveau d'abonnement) à patrick.premartin@developpeur-pascal.fr ou "DeveloppeurPascal".
+
+URL de consultation ou téléchargement de vos codes sources :
+
+=> https://github.com/Elli610/Liste-de-courses
+
+Pour que je vois à quoi ressemble votre projet en fonctionnement vous devez le publier sur un site web. Soit l'hébergement que je vous ai fourni, soit ailleurs si vous préférez (par exemple GitHub Pages si ça vous semble plus simple et qu'il n'y a que du "front" dedans).
+
+Partie 1 : Adresse à laquelle voir votre client en ligne ?
+
+=> http://89.58.41.130/liste_de_courses/liste.html
+
+Partie 2 : Adresse à laquelle se trouve votre serveur (utilisable depuis votre client ou un autre) ?
+
+=> http://89.58.41.130/liste_de_courses/server.php
+
+**********
+* Critères de notation sur ce TD
+**********
+
+Notation sur 15 points, 1 point par rubrique validée.
+
+Partie 1 : client de l'API (front-end)
+- codes sources rendus
+- codes sources lisibles (compréhensibles sans y passer des semaines)
+- choix techniques adaptés à la demande et aux contraintes imposées
+- résultat visible en ligne
+- site client fonctionnel (avec le serveur d'API fourni en ligne)
+- réponse conforme à la demande
+- URL du client fournie
+- interface utilisateur "user friendly"
+
+Partie 2 : serveur de l'API (back-end)
+- codes sources rendus
+- codes sources lisibles (compréhensibles sans y passer des semaines)
+- choix techniques adaptés à la demande et aux contraintes imposées
+- résultat visible en ligne
+- serveur d'API fonctionnel (depuis un autre client)
+- réponse conforme à la demande
+- URL du serveur fournie

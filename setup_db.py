@@ -8,7 +8,7 @@ def generate_db():
     print("Database created successfully")
     conn.close()
 
-generate_db()
+#generate_db()
 
 
 #insert data
@@ -19,9 +19,9 @@ def insert_data(name, quantity):
     print("Data inserted successfully")
     conn.close()
 
-insert_data('pommes', 5)
-insert_data('bananes', 3)
-insert_data('poires', 2)
+# insert_data('pommes', 5)
+# insert_data('bananes', 3)
+# insert_data('poires', 2)
 
 #read data
 def read_data():

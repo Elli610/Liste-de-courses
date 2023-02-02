@@ -29,24 +29,36 @@
             }
 
             console.log(shoppingList);
-            // add the new item to the shopping list
-            var name = input.value;
-            var quantity = inputQty.value;
-            shoppingList.push({name, quantity});
-            console.log("shoppingList", shoppingList);
-            // save the shopping list in the local storage
-            localStorage["courses"] = JSON.stringify(shoppingList);
-            // clear the input
-            input.value = "";
-            inputQty.value = "1";
-            // refresh the page
-            location.reload();
+            // add the new item to the shopping list if it is not already
+            var found = false;
+            for (var i = 0; i < shoppingList.length; i++) {
+                console.log(shoppingList[i].name, input.value);
+                if (shoppingList[i].name == input.value) {
+                    found = true;
+                    break;
+                }
+            }
+            if(!found){
+                var name = input.value;
+                var quantity = inputQty.value;
+                shoppingList.push({name, quantity});
+                console.log("shoppingList", shoppingList);
+                // save the shopping list in the local storage
+                localStorage["courses"] = JSON.stringify(shoppingList);
+                // clear the input
+                input.value = "";
+                inputQty.value = "1";
+                // refresh the page
+                location.reload();
+            } else{
+                alert("Cet élément est déjà dans la liste");
+            }
         }
         // check if there are some items in the local storage
         // if yes, display them wity their quantity
         // if no, display a message
         var savedShoppingList = localStorage["courses"];
-        if (savedShoppingList) {
+        if (savedShoppingList != "[]") {
             // Parse the JSON string into an object
             const shoppingList = JSON.parse(savedShoppingList);
             // display the list with a button to edit the quantity
